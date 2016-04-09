@@ -1,0 +1,29 @@
+\name{plot.R2s}
+\alias{plot.R2s}
+\title{Plot of R2}
+\description{Plots for the cross-validated R2 (CVR2), explained variance in the predictor variables (R2X), and the reponse (R2Y).
+}
+\usage{
+\method{plot}{R2s}(x, ...)
+}
+\arguments{
+\item{x}{An \code{R2s} object }
+\item{\dots}{ additional arguments.  Currently ignored. }
+}
+\details{
+\code{plot.R2s} is used to generates the graph of the cross-validated R2 (CVR2), explained variance in the predictor variables (R2X), and the reponse (R2Y) for PLS models.
+
+}
+\value{
+The output of \code{plot.R2s} is a graph of the stated explained variance summary.
+}
+\author{Thanh Tran (\email{thanh.tran@mvdalab.com})}
+\examples{
+data(Penta)
+## Number of bootstraps set to 500 to demonstrate flexibility
+## Use a minimum of 1000 (default) for results that support bootstraping
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
+               ncomp = 2, validation = "oob", boots = 500)
+R2s. <- R2s(mod1)
+plot(R2s.)
+}
