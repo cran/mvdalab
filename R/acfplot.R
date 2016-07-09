@@ -15,6 +15,8 @@ acfplot <- function(object, parm = NULL) {
           geom_hline(yintercept = 0) + 
           geom_hline(yintercept = ACF.UB, col = "red") + 
           geom_hline(yintercept = ACF.LB, col = "red") + 
+          ylab("ACF") + 
+          xlab("Lag") + 
           ggtitle(paste("Auto-correlation function on residuals for", parm, "in sMC Error Matrix")) +           
           theme(legend.position = "none") + 
           theme(plot.title = element_text(size = 20)) + 

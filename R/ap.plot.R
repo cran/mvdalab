@@ -10,8 +10,8 @@ ap.plot <- function(object, ncomp = object$ncomp) {
   print(with(df, ggplot(df, aes_string(Predicted, values)) + 
           theme_bw() + 
           theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +  
-          geom_text(aes_string(label = as.factor(Seq), col = as.factor(Seq))) + 
-          geom_smooth(method = "lm", se = F) + 
+          geom_text(aes_string(label = as.factor(Seq)), size = 5) + 
+          geom_smooth(method = "lm", se = F, col = "black") + 
           facet_wrap(~ind, scales = "free") + 
           xlab("Predicted") + 
           ylab("") + 

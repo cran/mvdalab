@@ -1,4 +1,4 @@
-vip <- function(object, ncomp = object$ncomp, conf = .95) {
+vip <- function(object, ncomp = object$ncomp, conf = .95, cut.off = 1) {
   if(object$val.method == "none" | object$val.method == "loo") {
     A <- c(object$y.loadings2)[1:ncomp]^2
     B <- apply(as.matrix(object$weights[, 1:ncomp]), 2, function(x) sum(x^2))
@@ -64,8 +64,8 @@ vip <- function(object, ncomp = object$ncomp, conf = .95) {
     row.names(vips.quants) <- NULL
     vips.quants$Actual <- VIP.All.Data[, 2]
     vips.quants$Bias <- vips.quants$boot.mean - vips.quants$Actual
-    vips.quants$'t value (VIP = 1)' <- (vips.quants$Actual - 1) / vips.quants$'Bootstrap Error'
-    vips.quants$'bias corrected t value (VIP = 1)' <- ((vips.quants$Actual - (vips.quants$Bias)) - 1) / vips.quants$'Bootstrap Error'
+    vips.quants$'t value' <- (vips.quants$Actual - cut.off) / vips.quants$'Bootstrap Error'
+    vips.quants$'bias corrected t value' <- ((vips.quants$Actual - (vips.quants$Bias)) - cut.off) / vips.quants$'Bootstrap Error'
     vips.quants$'bias t value' <- vips.quants$Bias / vips.quants$'Bootstrap Error'
     VIP.Out <- vips.quants[, c(3, 4, 8, 1:2, 5, 7, 9, 6, 10:11)]
     VIP <- data.frame(stack(vips.quants[, 1:2]), ncomp = vips.quants[, 3], variables = vips.quants[, 4])

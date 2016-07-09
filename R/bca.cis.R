@@ -37,8 +37,8 @@ bca.cis <- function(object, conf = 0.95,
     Aa <- Aa[Order, ]
     z0 <- BCa.df[[y]]$z0
     a <- BCa.df[[y]]$a
-    a.1 <- pnorm(z0 + ((z0 - qnorm(1- ((1-conf)/2))) / (1 + a*(z0 - qnorm(1- ((1-conf)/2))))))
-    a.2 <- pnorm(z0 + ((z0 + qnorm(1- ((1-conf)/2))) / (1 + a*(z0 + qnorm(1- ((1-conf)/2))))))
+    a.1 <- pnorm(z0 + ((z0 + qnorm((1 - conf) / 2))/(1 - a * (z0 + qnorm((1 - conf) / 2)))))
+    a.2 <- pnorm(z0 + ((z0 + qnorm((1 + conf) / 2))/(1 - a * (z0 + qnorm((1 + conf) / 2)))))
     Re <- do.call("rbind", llply(1:nrow(Aa), function(x) quantile(Aa[x, ], c(a.1[x], a.2[x]), na.rm = T)))
     Re <- data.frame(Re)
   names(Re) <- paste(c(Lower * 100, Upper * 100), "%", sep = "")

@@ -5,12 +5,13 @@
 \title{Variable Importance in the Projection}
 \description{This function calculated the variable importance in the projection (VIP) metric for an \code{mvdareg} object}
 \usage{
-vip(object, ncomp = object$ncomp, conf = .95)
+vip(object, ncomp = object$ncomp, conf = .95, cut.off = 1)
 }
 \arguments{
 \item{object}{ an mvdareg or mvdapaca object.  A fitted model. }
 \item{ncomp}{ the number of components to include in the model (see below). }
 \item{conf}{ for a bootstrapped model, the confidence level to use. }
+\item{cut.off}{ a cut.off value for the VIP (default = 1). }
 }
 \details{
 \code{vip} is used to extract a summary of the variable importance in the projection of a PLS model.

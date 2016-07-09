@@ -45,13 +45,13 @@ smc <- function(object, ncomps = object$ncomp, corrected = F) {
   smc.df$f.value <- qf(.95,1, (nrow(X.error.smc) - 2))
   smc.df$Significant <- ifelse(smc.df$p.value < 0.05, "Yes", "No")
   
-Results <- list(smc = smc.df, modeled = X.hat.smc, error = X.error.smc)
+Results <- list(smc = smc.df, modeled = X.hat.smc, error = X.error.smc, corrected = corrected)
 class(Results) <- "smc"
 Results
 }
 
 print.smc <- function(x, ...) {
-  cat("\nsmc summary:\n")
+  cat(paste("\nsmc summary:\nCorrected =", x$corrected, "\n"))
   print(x$smc[order(x$smc$smc, decreasing = TRUE), ])
 }
 
@@ -75,8 +75,8 @@ plot.smc <- function(x, variables = "all", ...) {
   print(with(df, ggplot(df, aes(smc, Variables)) + 
     theme_bw() + 
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-    geom_point(aes(col = Significant), size = 5) + 
-    ggtitle("sMC Results") + 
+    geom_point(aes(pch = Significant), size = 5) + 
+    ggtitle(paste("sMC Results\nCorrected = ", x$corrected)) + 
     xlab("F-statistics") + 
     theme(plot.title = element_text(size = 20)) + 
     theme(axis.title.x = element_text(size = 20)) +

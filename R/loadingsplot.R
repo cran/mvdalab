@@ -21,9 +21,9 @@ loadingsplot <- function(object, ncomp = object$ncomp, conf = .95) {
     print(with(df, ggplot(df, aes(reorder(variable, -abs(value), mean), value)) + 
             theme_bw() + 
             theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-            geom_point(aes(col = variable), size = 5) + 
+            geom_point(size = 5) + 
             geom_hline(yintercept = 0) + 
-            ylab("loadings") + 
+            ylab("Loadings") + 
             xlab("Variables") + 
             theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
             ggtitle("Loadings Plot") + 
@@ -58,9 +58,9 @@ loadingsplot <- function(object, ncomp = object$ncomp, conf = .95) {
     print(with(df, ggplot(df, aes(reorder(variable, -abs(value), mean), value)) + 
             theme_bw() + 
             theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-            geom_point(aes(col = variable), size = 5) + 
+            geom_point(size = 5) + 
             geom_hline(yintercept = 0) + 
-            ylab("loadings") + 
+            ylab("Loadings") + 
             xlab("Variables") + 
             theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
             ggtitle("Loadings Plot") + 
@@ -80,9 +80,9 @@ loadingsplot <- function(object, ncomp = object$ncomp, conf = .95) {
     print(with(df, ggplot(df, aes(reorder(variable, -abs(value), mean), value)) + 
             theme_bw() + 
             theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-            geom_line(aes(col = variable)) + 
+            geom_line() + 
             geom_hline(yintercept = 0) + 
-            ylab("loadings") + 
+            ylab("Loadings") + 
             xlab("Variables") + 
             theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
             ggtitle("Loadings Plot") + 

@@ -47,7 +47,7 @@ mewma <- function(X, phase = 1, lambda = 0.2, conf = c(0.95, 0.99),
   df$Result.95 <- ifelse(df$Result.99 == "Out", "Out", df$Result.95)
   print(with(df, ggplot(df, aes_string(Seq, T2.Scores)) + theme_bw() + 
                theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-               geom_text(aes_string(label = as.factor(Seq), col = as.factor(Seq))) + 
+               geom_text(aes_string(label = as.factor(Seq))) + 
                theme(legend.position = "none") + geom_line() + geom_hline(yintercept = df$Upper.95, 
                                                                           col = "blue") + geom_hline(yintercept = df$Upper.99, 
                                                                                                      col = "red") + xlab("Batch Sequence") + ylab("T2") + 

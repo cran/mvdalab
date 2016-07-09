@@ -8,7 +8,7 @@
 \item{ncomp}{ number of components used in the model assessment }
 }
 \details{
-This function provides the actual versus predicted and residuals versus predicted plot as part of model a assessment across the desired number of latent variables.
+This function provides the actual versus predicted and residuals versus predicted plot as part of model a assessment across the desired number of latent variables.  A smooth fit (dashed line) is added in order to detect curvature in the fit.
 }
 \value{
 The output of \code{ap.plot} is a two facet graph for actual versus predicted and residuals versus predicted plots.

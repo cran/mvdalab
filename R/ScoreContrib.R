@@ -22,7 +22,7 @@ ScoreContrib <- function(object, obs1 = 1, obs2 = NULL) {
     names(Contributions)[1:ncomp] <- c(1:ncomp)
     Contributions$Variable <- rownames(Contributions)
     row.names(Contributions) <- NULL
-    Contributions <- list(score.contribution = Contributions)
+    Contributions <- list(score.contribution = Contributions, obs1 = obs1, obs2 = obs2)
     class(Contributions) <- "cp"
     Contributions
 }

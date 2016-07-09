@@ -52,7 +52,7 @@ jab <- llply(1:Obj, function(this.obs) {
 print(with(df, ggplot(df, aes(infl.values, Empirical.Quantiles.out)) + 
         theme_bw() + 
         theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-        geom_text(aes(label = as.factor(Obs), col = as.factor(Obs))) + 
+        geom_text(aes(label = as.factor(Obs))) + 
         theme(legend.position = "none") + 
         geom_line(aes(group = Percentile)) + 
         geom_hline(data = df, aes(yintercept = Empirical.Quantiles.in), lty = 2) + 

@@ -41,4 +41,6 @@ data(Penta)
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
                ncomp = 2, validation = "oob", boots = 500)
 bca.cis(mod1, conf = .95, type = "coefficients")
+bca.cis(mod1, conf = .95, type = "loadings")
+bca.cis(mod1, conf = .95, type = "weights")
 }

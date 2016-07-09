@@ -1,12 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 **NOTE: This R package focuses on the implementation of latent variable methods and multivariate modeling tools. The focus is on exploratory analyses using dimensionality reduction methods and classical multivariate statistical tools.**
 
-### Installation
-
-``` r
-devtools::install_github("mvdalab/mvdalab")
-```
-
 ### Quick demo
 
 Fitting a PLS model:

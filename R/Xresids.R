@@ -15,10 +15,10 @@ Xresids <- function(object, ncomp = object$ncomp, conf = c(.95, .99), normalized
   print(with(df, ggplot(df, aes_string(Seq, df.Score)) + 
         theme_bw() + 
         theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +  
-        geom_text(aes_string(label = as.factor(Seq), col = as.factor(Seq))) +
+        geom_text(aes_string(label = as.factor(Seq)), size = 5) +
         geom_line() + 
-        geom_hline(yintercept = df$Upper.95, col = "blue") + 
-        geom_hline(yintercept = df$Upper.99, col = "red") + 
+        geom_hline(yintercept = df$Upper.95, lty = 2) + 
+        geom_hline(yintercept = df$Upper.99, lty = 1) + 
         theme(legend.position = "none") + 
         xlab("Batch Sequence") + 
         ylab("Residuals") + 

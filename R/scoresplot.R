@@ -4,7 +4,8 @@ scoresplot <- function(object, comps = c(1, 2), alphas = c(.95, .99), segments =
     print(with(df, ggplot(df, aes(x = label, y = A)) + 
           theme_bw() + 
           theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-          geom_point(aes(label = label, col = "black")) + 
+          # geom_point(aes(label = label), col = "black") + 
+          geom_text(aes(label = label), col = "black") + 
           geom_line() + 
           ggtitle("Score Plot") + 
           theme(legend.position = "none") + 
@@ -41,8 +42,8 @@ scoresplot <- function(object, comps = c(1, 2), alphas = c(.95, .99), segments =
     output.graph <- with(df, ggplot(df, aes(x = A, y = B)) + 
            theme_bw() + 
            theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-           geom_point() + 
-           geom_text(aes(label = label, col = label)) + 
+           # geom_point() + 
+           geom_text(aes(label = label), col = "black") + 
            ggtitle("Score Plot") + 
            theme(legend.position = "none") + 
            ylab(paste("PC", comps[2])) + 

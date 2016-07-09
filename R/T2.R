@@ -17,11 +17,11 @@ T2 <- function(object, ncomp = object$ncomp, phase = 1, conf = c(.95, .99)) {
   print(with(df, ggplot(df, aes_string(Seq, T2.Scores)) + 
           theme_bw() + 
           theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-          geom_text(aes_string(label = as.factor(Seq), col = as.factor(Seq))) + 
+          geom_text(aes_string(label = as.factor(Seq)), size = 5) + 
           theme(legend.position = "none") + 
           geom_line() + 
-          geom_hline(yintercept = df$Upper.95, col = "blue") + 
-          geom_hline(yintercept = df$Upper.99, col = "red") + 
+          geom_hline(yintercept = df$Upper.95, lty = 2) + 
+          geom_hline(yintercept = df$Upper.99, lty = 1) + 
           xlab("Batch Sequence") + 
           ylab("T2") + 
           ggtitle(paste("T2 Range Plot for", ncomp, "components")) +           

@@ -4,12 +4,13 @@
 \description{This function generates a plot an object of class \code{vip}.
 }
 \usage{
-\method{plot}{vip}(x, ncomp = 1, ...)
+\method{plot}{vip}(x, ncomp = 1, cut.off = 1, ...)
 }
 
 \arguments{
 \item{x}{\code{vip} object }
 \item{ncomp}{ the number of components to include the graph output. }
+\item{cut.off}{ a cut.off value for the VIP (default = 1). }
 \item{\dots}{ additional arguments.  Currently ignored. }
 }
 \details{

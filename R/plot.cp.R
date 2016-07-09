@@ -5,7 +5,7 @@ plot.cp <- function(x, ncomp = "Overall", ...) {
   print(with(df, ggplot(df, aes_string(reorder(Variable, -Contributions, mean), Contributions, ymin = 0, ymax = Contributions)) + 
       theme_bw() + 
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-      geom_linerange(aes_string(col = Variable), lwd = 2) + 
+      geom_linerange(lwd = 2) + 
       geom_hline(yintercept = 0) + 
       theme(legend.position = "none") + 
       xlab("Variable") + 

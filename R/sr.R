@@ -41,7 +41,7 @@ plot.sr <- function(x, variables = "all", ...) {
 print(with(df, ggplot(df, aes(SRS, Variables)) + 
           theme_bw() + 
           theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-          geom_point(aes(col = Significant), size = 5) + 
+          geom_point(aes(pch = Significant), size = 5) + 
           ggtitle("Selectivity Ratio Results") + 
           xlab("F-statistics") + 
           # theme(legend.position = "none") + 
