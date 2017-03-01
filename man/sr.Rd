@@ -15,7 +15,7 @@ sr(object, ncomps = object$ncomp)
 \details{
 \code{sr} is used to extract a summary of the significant multivariae correlation of a PLS model.
 
-If \code{comps} is missing (or is \code{NULL}), summaries for all \code{sr} estimates are returned. Otherwise, if comps are given parameters for a model with only the requested component comps is returned. 
+If \code{comps} is missing (or is \code{NULL}), summaries for all \code{sr} estimates are returned. Otherwise, if comps are given parameters for a model with only the requested component comps is returned.
 }
 \value{
 The output of \code{sr} is an \code{sr summary} detailing the following:
@@ -23,6 +23,8 @@ The output of \code{sr} is an \code{sr summary} detailing the following:
 \item{p.value}{ p-value of the sr statistic. }
 \item{f.value}{ f-value of the sr statistic. }
 \item{Significant}{ Assessment of statistical significance. }
+
+Note that hidden objects include the SR modeled matrix and error matrices.
 }
 \author{Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com})}
 \references{
@@ -33,10 +35,16 @@ O.M. Kvalheim, Interpretation of partial least squares regression models by mean
 \seealso{\code{\link{smc}}, \code{\link{vip}}}
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
 sr(mod1)
 plot(sr(mod1))
+
+\dontrun{
+mod2 <- plsFit(Sepal.Length ~., scale = TRUE, data = iris,
+               method = "wrtpls", validation = "none") #ncomp is ignored
+plot(sr(mod2, ncomps = 2))
+}
 }

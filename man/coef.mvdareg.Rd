@@ -25,14 +25,14 @@ If \code{comps} is missing (or is \code{NULL}), all parameter estimates are retu
 \item{y.loadings}{ a named vector, or matrix, of y.loadings. }
 }
 \author{Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com})}
-\seealso{\code{\link{coef}}, \code{\link{coefficients.boots}}, \code{\link{coefficients}}, 
-\code{\link{loadings}}, \code{\link{loadings.boots}}, \code{\link{weights}}, 
+\seealso{\code{\link{coef}}, \code{\link{coefficients.boots}}, \code{\link{coefficients}},
+\code{\link{loadings}}, \code{\link{loadings.boots}}, \code{\link{weights}},
 \code{\link{weight.boots}}}
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
 coef(mod1, type = "coefficients", conf = .95)
 }

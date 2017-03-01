@@ -16,13 +16,15 @@
 }
 \author{Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com})}
 \examples{
-###  Plus-Minus CLASSIFIER WITH validation = 'loo', i.e. leave-one-out CV ###
+###  PLUS-Minus CLASSIFIER WITH validation = 'none', i.e. no CV ###
 data(plusMinusDat)
-mod1 <- plusminusFit(Y ~., data = plusMinusDat, validation = "loo", n_cores = 2)
+mod1 <- plusminusFit(Y ~., data = plusMinusDat, validation = "none", n_cores = 2)
 plot(mod1, ncomp = 2, comps = c(1, 2))
 
-###  PLUS-Minus CLASSIFIER WITH validation = 'none', i.e. no CV ###
-
-mod2 <- plusminusFit(Y ~., data = plusMinusDat, validation = "none", n_cores = 2)
+###  Plus-Minus CLASSIFIER WITH validation = 'loo', i.e. leave-one-out CV ###
+\dontrun{
+data(plusMinusDat)
+mod2 <- plusminusFit(Y ~., data = plusMinusDat, validation = "loo", n_cores = 2)
 plot(mod2, ncomp = 2, comps = c(1, 2))
+}
 }

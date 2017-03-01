@@ -2,14 +2,14 @@
 \alias{bca.cis}
 \title{Bias-corrected and Accelerated Confidence Intervals}
 \description{Computes bootstrap BCa confidence intervals for chosen parameters for PLS models fitted with \code{validation = "oob"}.}
-\usage{bca.cis(object, conf = .95, type = c("coefficients", 
+\usage{bca.cis(object, conf = .95, type = c("coefficients",
         "loadings", "weights"))}
 \arguments{
 \item{object}{ an object of class \code{"mvdareg"}, i.e. \code{plsFit}. }
 \item{conf}{ desired confidence level }
 \item{type}{ input parameter vector  }
 }
-\details{The function computes the bootstrap BCa confidence intervals for any fitted \code{mvdareg} model. 
+\details{The function computes the bootstrap BCa confidence intervals for any fitted \code{mvdareg} model.
 Should be used in instances in which there is reason to suspectd the percentile intervals.  Results provided across all latent variables (LVs).  As such, it may be slow for models with a large number of LVs.
 }
 \value{
@@ -36,11 +36,13 @@ Hinkley, D.V. (1988) Bootstrap methods (with Discussion). Journal of the Royal S
 \seealso{\code{\link{plsFit}}, \code{\link{mvdaboot}}, \code{\link{boot.plots}}}
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
 bca.cis(mod1, conf = .95, type = "coefficients")
+\dontrun{
 bca.cis(mod1, conf = .95, type = "loadings")
 bca.cis(mod1, conf = .95, type = "weights")
+}
 }

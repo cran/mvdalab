@@ -13,7 +13,7 @@
 
 \code{coefficients} is used to extract a bootstrap summary of the regression of a PLS model.
 
-If \code{comps} is missing (or is NULL), summaries for all regression estimates are returned.  Otherwise, if comps is given parameters for a model with only the requested component comps is returned. 
+If \code{comps} is missing (or is NULL), summaries for all regression estimates are returned.  Otherwise, if comps is given parameters for a model with only the requested component comps is returned.
 
 Boostrap summaries provided are for actual regression coefficients, bootstrap percentiles, bootstrap mean, skewness, and bias.  These summaries can also be extracted using \code{coefficients.boots}
 
@@ -35,9 +35,9 @@ A coefficients object contains a data frame with columns:
 \seealso{\code{\link{coef}}, \code{\link{coefficients.boots}}, \code{\link{coefficients}}}
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
 coefficients(mod1)
 }

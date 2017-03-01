@@ -3,8 +3,8 @@
 \title{Model Predictions From a plsFit Model}
 \description{\code{predict} provides predictions from the results of a pls model.}
 \usage{
-\method{predict}{mvdareg}(object, newdata, ncomp = object$ncomp, 
-            na.action = na.pass, ...) 
+\method{predict}{mvdareg}(object, newdata, ncomp = object$ncomp,
+            na.action = na.pass, ...)
 }
 \arguments{
 \item{object}{ A \code{plsFit} model. }
@@ -26,15 +26,17 @@ If \code{comps} is missing (or is NULL), predictions of the number of latent var
 \references{
 NOTE: This function is adapted from \code{mvr} in package \pkg{pls} with extensive modifications by Nelson Lee Afanador.
 }
-\seealso{\code{\link{coef}}, \code{\link{coefficients.boots}}, \code{\link{coefficients}}, 
-\code{\link{loadings}}, \code{\link{loadings.boots}}, \code{\link{weights}}, 
+\seealso{\code{\link{coef}}, \code{\link{coefficients.boots}}, \code{\link{coefficients}},
+\code{\link{loadings}}, \code{\link{loadings.boots}}, \code{\link{weights}},
 \code{\link{weight.boots}}}
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
 predict.mvdareg(mod1)
+\dontrun{
 residuals(mod1)
+}
 }

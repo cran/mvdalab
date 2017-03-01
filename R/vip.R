@@ -14,8 +14,9 @@ vip <- function(object, ncomp = object$ncomp, conf = .95, cut.off = 1) {
             varying = list(1:ncomp), direction = "long")
     names(VIP)[2] <- "VIP"
     row.names(VIP) <- NULL
-    Results <- list(VIP = VIP, VIP.s = NULL, vip.boots = NULL, 
-                    val.method = object$val.method, ncomp = ncomp)
+    Results <- list(VIP = VIP, VIP.s = NULL, vip.boots = NULL,
+                    val.method = object$val.method, ncomp = ncomp,
+                    cut.off = cut.off)
     class(Results) <- "vip"
     Results
   } else {
@@ -69,8 +70,9 @@ vip <- function(object, ncomp = object$ncomp, conf = .95, cut.off = 1) {
     vips.quants$'bias t value' <- vips.quants$Bias / vips.quants$'Bootstrap Error'
     VIP.Out <- vips.quants[, c(3, 4, 8, 1:2, 5, 7, 9, 6, 10:11)]
     VIP <- data.frame(stack(vips.quants[, 1:2]), ncomp = vips.quants[, 3], variables = vips.quants[, 4])
-    Results <- list(VIP = vips.quants, VIP.s = VIP, vip.boots = A, VIP.All.Data = VIP.All.Data, 
-                    val.method = object$val.method, ncomp = ncomp, VIP.Out = VIP.Out)
+    Results <- list(VIP = vips.quants, VIP.s = VIP, vip.boots = A, VIP.All.Data = VIP.All.Data,
+                    val.method = object$val.method, ncomp = ncomp, VIP.Out = VIP.Out,
+                    cut.off = cut.off)
     class(Results) <- "vip"
     Results
   }

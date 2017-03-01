@@ -12,11 +12,11 @@ plusminus.loo(X, Y, method = "plusminus", n_cores, ...)
 \item{n_cores}{ number of cores }
 \item{\dots}{ additional arguments.  Currently ignored. }
 }
-\details{This function should not be called directly, but through the generic function \code{plusminusFit} with the argument \code{validation = 'loo'}. 
+\details{This function should not be called directly, but through the generic function \code{plusminusFit} with the argument \code{validation = 'loo'}.
 }
 \value{
 Provides the following crossvalideted results as a list for \code{plusminus} objects:
-  
+
 \item{cvError}{ leave-one-out estimate of cv error. }
 \item{in.bag}{ leave-one-out samples used for model building. }
 }
@@ -32,8 +32,9 @@ NOTE: This function is adapted from \code{mvr} in package \pkg{pls} with extensi
 \examples{
 data(plusMinusDat)
 mod1 <- plusminusFit(Y ~., data = plusMinusDat, validation = "loo", n_cores = 2)
+\dontrun{
 summary(mod1)
-
 mod1$validation$cvError
-mod1$validation$in.bag  
+mod1$validation$in.bag
+}
 }

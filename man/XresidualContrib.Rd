@@ -25,13 +25,15 @@ MacGregor, Process Monitoring and Diagnosis by Multiblock PLS Methods, May 1994 
 
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
 XresidualContrib(mod1, ncomp = 2, obs1 = 3)
 
+\dontrun{
 #PCA Model
-pc1 <- pcaFit(Penta[, -1])
+pc1 <- pcaFit(Penta[, -1], ncomp = 4)
 XresidualContrib(pc1, ncomp = 3, obs1 = 3)
+}
 }

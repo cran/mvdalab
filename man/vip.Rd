@@ -16,9 +16,9 @@ vip(object, ncomp = object$ncomp, conf = .95, cut.off = 1)
 \details{
 \code{vip} is used to extract a summary of the variable importance in the projection of a PLS model.
 
-If \code{comps} is missing (or is \code{NULL}), summaries for all regression estimates are returned.  Otherwise, if \code{comps} are given parameters for a model with only the requested component comps is returned. 
+If \code{comps} is missing (or is \code{NULL}), summaries for all regression estimates are returned.  Otherwise, if \code{comps} are given parameters for a model with only the requested component comps is returned.
 
-For \code{mvdareg} objects only, boostrap summaries provided are for actual VIPs, bootstrap percentiles, bootstrap mean, skewness, and bias.  
+For \code{mvdareg} objects only, boostrap summaries provided are for actual VIPs, bootstrap percentiles, bootstrap mean, skewness, and bias.
 }
 \value{
 A \code{vip} object contains component results for the following:
@@ -42,9 +42,9 @@ Nelson Lee Afanador, Thanh N. Tran, Lutgarde M.C. Buydens, An assessment of the 
 \seealso{\code{\link{smc}}, \code{\link{sr}}}
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
-vip(mod1, conf = .95)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
+vip(mod1, ncomp = 2, conf = .95)
 }

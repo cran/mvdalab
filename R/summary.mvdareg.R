@@ -2,43 +2,44 @@ summary.mvdareg <- function(object, ncomp = object$ncomp, digits = 3, ...) {
   x <- object
   nobj <- nrow(x$scores)
   nresp <- length(x$Ymeans)
-  yvarnames <- "y" 
+  yvarnames <- "y"
   if(object$val.method == "none") {
     z <- x
     ans <- z[c("call", "terms")]
     class(ans) <- "summary.mvda"
     ans$coefficients <- matrix(NA, 0L, 3L)
     dimnames(ans$coefficients) <- list(NULL, c("Estimate", "Bootstrap Error", "'t value'"))
-    ans$sigma <- "N/A" 
-    se <- 0 
+    ans$sigma <- "N/A"
+    se <- 0
     est <- z$coefficients[, ncomp]
     Order <- names(sort(abs(est), decreasing = T))
     est <- est[Order]
-    tval <- 0 
+    tval <- 0
     ans <- z[c("call", "terms")]
     ans$coefficients <- cbind(est, se, tval)
-    dimnames(ans$coefficients) <- list(Order, 
+    dimnames(ans$coefficients) <- list(Order,
                                        c("Estimate", "Bootstrap Error", "'t value'"))
-    ans$sigma <- z$validation$RMSPRESS[ncomp] 
+    ans$sigma <- z$validation$RMSPRESS[ncomp]
     class(ans) <- "summary.mvda"
     cat("Call:\n\n")
     print(x$call)
     cat("\nCoefficients:\n")
     print((ans$coefficients))
     cat("\nFit Summary: \n\nNumber of objects =", nobj)
-    cat("\nNumber of predictor variables =", length(attr(object$terms, "term.labels"))) 
+    cat("\nNumber of predictor variables =", length(attr(object$terms, "term.labels")))
     cat("\nMethod:", x$method)
     cat("\nDesign Matrix for Factors =", object$contrasts)
     cat("\nNumber of components considered =", ncomp)
     R2X <- sapply(1:ncomp, function(x) {
-      1 - sum(diag(crossprod(as.matrix(object$Xdata) - 
-                               (object$scores[ , 1:x] %*% t(object$loadings[ , 1:x]))))) / 
+      1 - sum(diag(crossprod(as.matrix(object$Xdata) -
+                               (object$scores[ , 1:x] %*% t(object$loadings[ , 1:x]))))) /
         sum(diag(crossprod(as.matrix(object$Xdata))))
     })
-    R2Y <- 1 - sapply(1:ncomp, function(x) crossprod(object$Yactual - object$iPreds[, x])) / 
+    R2Y <- 1 - sapply(1:ncomp, function(x) crossprod(object$Yactual - object$iPreds[, x])) /
       crossprod(object$Yactual - mean(object$Yactual))
     cat("\nR2X =", round(R2X, digits))
     cat("\nR2Y =", round(R2Y, digits))
+    cat("\nSignificant LVs =", x$wrtpls.out.Sig)
     cat("\nNo Cross-Validation")
   } else if(object$val.method == "loo") {
     z <- x
@@ -46,15 +47,15 @@ summary.mvdareg <- function(object, ncomp = object$ncomp, digits = 3, ...) {
     class(ans) <- "summary.mvda"
     ans$coefficients <- matrix(NA, 0L, 3L)
     dimnames(ans$coefficients) <- list(NULL, c("Estimate", "Bootstrap Error", "'t value'"))
-    ans$sigma <- "N/A" 
-    se <- 0 
+    ans$sigma <- "N/A"
+    se <- 0
     est <- z$coefficients[, ncomp]
     Order <- names(sort(abs(est), decreasing = T))
     est <- est[Order]
-    tval <- 0 
+    tval <- 0
     ans <- z[c("call", "terms")]
     ans$coefficients <- cbind(est, se, tval)
-    dimnames(ans$coefficients) <- list(Order, 
+    dimnames(ans$coefficients) <- list(Order,
                                        c("Estimate", "Bootstrap Error", "'t value'"))
     ans$sigma <- z$validation$RMSPRESS[ncomp] #sqrt(resvar)
     class(ans) <- "summary.mvda"
@@ -63,19 +64,19 @@ summary.mvdareg <- function(object, ncomp = object$ncomp, digits = 3, ...) {
     cat("\nCoefficients:\n")
     print((ans$coefficients))
     cat("\nFit Summary: \n\nNumber of objects =", nobj)
-    cat("\nNumber of predictor variables =", length(attr(object$terms, "term.labels"))) 
+    cat("\nNumber of predictor variables =", length(attr(object$terms, "term.labels")))
     cat("\nMethod:", x$method)
     cat("\nDesign Matrix for Factors =", object$contrasts)
     cat("\nNumber of components considered =", ncomp)
     R2X <- sapply(1:ncomp, function(x) {
-      1 - sum(diag(crossprod(as.matrix(object$Xdata) - 
-                               (object$scores[ , 1:x] %*% t(object$loadings[ , 1:x]))))) / 
+      1 - sum(diag(crossprod(as.matrix(object$Xdata) -
+                               (object$scores[ , 1:x] %*% t(object$loadings[ , 1:x]))))) /
         sum(diag(crossprod(as.matrix(object$Xdata))))
     })
-    R2Y <- 1 - sapply(1:ncomp, function(x) crossprod(object$Yactual - object$iPreds[, x])) / 
+    R2Y <- 1 - sapply(1:ncomp, function(x) crossprod(object$Yactual - object$iPreds[, x])) /
       crossprod(object$Yactual - mean(object$Yactual))
     cat("\nR2X =", round(R2X, digits))
-    cat("\nR2Y =", round(R2Y, digits))    
+    cat("\nR2Y =", round(R2Y, digits))
     cat("\nNo. of LOO samples = ", nobj)
     cat("\nNumber of components considered\nin above parameter estimates =", ncomp)
     cat("\nCV R2 (per component) =", round(x$validation$cvR2[1:ncomp], digits))
@@ -105,13 +106,13 @@ summary.mvdareg <- function(object, ncomp = object$ncomp, digits = 3, ...) {
     tval <- combined$estimate/combined$bootsterror
     bias <- combined$boot.mean - combined$estimate
     bias.se <- bias / combined$bootsterror
-    ans$coefficients <- cbind(combined$estimate, 
-                              combined$bootsterror, tval, 
+    ans$coefficients <- cbind(combined$estimate,
+                              combined$bootsterror, tval,
                               bias, bias.se)
-     dimnames(ans$coefficients) <- list(combined$variables, 
-                                       c("Estimate", "Bootstrap Error", "'t value'", 
+     dimnames(ans$coefficients) <- list(combined$variables,
+                                       c("Estimate", "Bootstrap Error", "'t value'",
                                          "bias", "'bias t value'"))
-    ans$sigma <- z$validation$RMSPRESS[ncomp] 
+    ans$sigma <- z$validation$RMSPRESS[ncomp]
     Order <- names(sort(abs((ans$coefficients[, 1])), decreasing = T))
     ans$coefficients <- ans$coefficients[Order, ]
     class(ans) <- "summary.mvda"
@@ -120,17 +121,17 @@ summary.mvdareg <- function(object, ncomp = object$ncomp, digits = 3, ...) {
     cat("\nCoefficients:\n")
     print((ans$coefficients))
     cat("\nFit Summary: \n\nNumber of objects =", nobj)
-    cat("\nNumber of predictor variables =", length(attr(object$terms, "term.labels"))) 
+    cat("\nNumber of predictor variables =", length(attr(object$terms, "term.labels")))
     cat("\nMethod:", x$method)
     cat("\nDesign Matrix for Factors =", object$contrasts)
     cat("\nNo. of bootstrap samples = ", x$validation$bootstraps)
     cat("\nNumber of components considered\nin above parameter estimates =", ncomp)
     R2X <- sapply(1:ncomp, function(x) {
-        1 - sum(diag(crossprod(as.matrix(object$Xdata) - 
-                (object$scores[ , 1:x] %*% t(object$loadings[ , 1:x]))))) / 
+        1 - sum(diag(crossprod(as.matrix(object$Xdata) -
+                (object$scores[ , 1:x] %*% t(object$loadings[ , 1:x]))))) /
         sum(diag(crossprod(as.matrix(object$Xdata))))
           })
-    R2Y <- 1 - sapply(1:ncomp, function(x) crossprod(object$Yactual - object$iPreds[, x])) / 
+    R2Y <- 1 - sapply(1:ncomp, function(x) crossprod(object$Yactual - object$iPreds[, x])) /
           crossprod(object$Yactual - mean(object$Yactual))
     cat("\nR2X =", round(R2X, digits))
     cat("\nR2Y =", round(R2Y, digits))

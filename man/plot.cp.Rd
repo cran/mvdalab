@@ -21,15 +21,23 @@ The output of \code{plot} is a graph of score contributions for the specified ob
 \author{Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com})}
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, method = "bidiagpls", validation = "loo")
 Score.Contributions1 <- ScoreContrib(mod1, obs1 = 1, obs2 = 3)
 plot(Score.Contributions1, ncomp = 1)
 
+\dontrun{
+data(Penta)
+## Number of bootstraps set to 300 to demonstrate flexibility
+## Use a minimum of 1000 (default) for results that support bootstraping
+mod2 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
+Score.Contributions2 <- ScoreContrib(mod2, obs1 = 1, obs2 = 3)
+plot(Score.Contributions2, ncomp = 1)
+}
+
 #PCA Model
-pc1 <- pcaFit(Penta[, -1])
+pc1 <- pcaFit(Penta[, -1], ncomp = 3)
 Score.Contributions1 <- ScoreContrib(mod1, obs1 = 1, obs2 = 3)
 plot(Score.Contributions1, ncomp = 1)
 }

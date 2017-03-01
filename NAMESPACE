@@ -18,9 +18,11 @@ S3method(plot, cp)
 S3method(plot, mvcomp)
 S3method(plot, mvdapca)
 S3method(plot, mvdareg)
+S3method(plot, plusminus)
 S3method(plot, smc)
 S3method(plot, sr)
 S3method(plot, vip)
+S3method(plot, wrtpls)
 S3method(predict, mvdareg)
 S3method(print, R2s)
 S3method(print, empca)
@@ -35,10 +37,9 @@ S3method(print, smc)
 S3method(print, sr)
 S3method(print, vip)
 S3method(print, plusminus)
-S3method(plot, plusminus)
 S3method(summary, mvdareg)
-S3method(weights, mvdareg)
 S3method(summary, plusminus)
+S3method(weights, mvdareg)
 importFrom("grDevices", "dev.flush", "dev.hold")
 importFrom("graphics", "arrows", "axis", "mtext", "par", "text",
             "title")
@@ -46,6 +47,6 @@ importFrom("stats", ".checkMFClasses", "acf", "aggregate",
             "contr.treatment", "cor", "cov", "delete.response",
             "median", "model.frame", "model.matrix", "model.response",
             "na.omit", "na.pass", "napredict", "pf", "pnorm", "qbeta",
-            "qchisq", "qexp", "qf", "qnorm", "qpois", "quantile",
+            "qchisq", "qexp", "qf", "qnorm", "qpois", "qt", "quantile",
             "reshape", "rnorm", "terms", "var")
 importFrom("utils", "stack")

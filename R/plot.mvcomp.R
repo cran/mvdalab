@@ -11,31 +11,31 @@ plot.mvcomp <- function(x, Diff2Plot = c(3, 4), segments = 51, include.zero = FA
   angles <- (0:segments) * 2 * pi/segments
   unit.circle <- cbind(cos(angles), sin(angles))
   Q <- sweep(svd(S2)$v, 2, Radius, "*")
-  df <- data.frame(sweep(unit.circle %*% 
+  df <- data.frame(sweep(unit.circle %*%
                                t(Q), 2, as.vector(center[Diff2Plot, ]), "+"))
   names(df) <- c("mu 1", "mu 2")
-  output <- with(df, ggplot(df, aes_string(`mu 1`, `mu 2`)) + 
-    theme_bw() + 
-    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-    geom_path() + 
-    theme(legend.position = "none") + 
-    ggtitle("Confidence Ellipse for Mean Vector Differences") + 
-    xlab(paste("mu", Diff2Plot[1], "difference")) + 
-    ylab(paste("mu", Diff2Plot[2], "difference")) + 
-    geom_vline(xintercept = Joint.CIs[Diff2Plot[1], 1], col = "lightgrey") + 
+  output <- with(df, ggplot(df, aes_string(`mu 1`, `mu 2`)) +
+    theme_bw() +
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+    geom_path() +
+    theme(legend.position = "none") +
+    ggtitle("Confidence Ellipse for Mean Vector Differences") +
+    xlab(paste("mu", Diff2Plot[1], "difference")) +
+    ylab(paste("mu", Diff2Plot[2], "difference")) +
+    geom_vline(xintercept = Joint.CIs[Diff2Plot[1], 1], col = "lightgrey") +
     geom_vline(xintercept = Joint.CIs[Diff2Plot[1], 2], col = "lightgrey") +
-    geom_hline(yintercept = Joint.CIs[Diff2Plot[2], 1], col = "lightgrey") + 
-    geom_hline(yintercept = Joint.CIs[Diff2Plot[2], 2], col = "lightgrey") +    
-    theme(plot.title = element_text(size = 20)) + 
-    theme(axis.title.x = element_text(size = 20)) + 
-    theme(strip.text.x = element_text(size = 20, colour = "black", face="bold")) + 
-    theme(strip.text.y = element_text(size = 20, colour = "black", face="bold")) + 
-    theme(axis.title.y = element_text(size = 20, angle = 90)) + 
-    theme(axis.text.x = element_text(size = 15, angle = 90, vjust = 0.5, face = "bold")) + 
-    theme(axis.text.y = element_text(size = 15, angle = 0, face = "bold")))
+    geom_hline(yintercept = Joint.CIs[Diff2Plot[2], 1], col = "lightgrey") +
+    geom_hline(yintercept = Joint.CIs[Diff2Plot[2], 2], col = "lightgrey") +
+    theme(plot.title = element_text(size = 20)) +
+    theme(axis.title.x = element_text(size = 15)) +
+    theme(strip.text.x = element_text(size = 10, colour = "black", face="bold")) +
+    theme(strip.text.y = element_text(size = 10, colour = "black", face="bold")) +
+    theme(axis.title.y = element_text(size = 15, angle = 90)) +
+    theme(axis.text.x = element_text(size = 10, angle = 90, vjust = 0.5, face = "bold")) +
+    theme(axis.text.y = element_text(size = 10, angle = 0, face = "bold")))
   if(include.zero == TRUE) {
     output <- output + geom_vline(xintercept = 0, lty = 2) + geom_hline(yintercept = 0, lty = 2)
     print(output)
-  } 
+  }
   print(output)
 }

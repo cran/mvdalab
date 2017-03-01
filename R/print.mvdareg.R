@@ -1,15 +1,15 @@
-print.mvdareg <- function(x, ...) 
+print.mvdareg <- function(x, ...)
 {
   object <- x
   switch(object$method, bidiagpls = {
     ana = "Partial least squares regression"
     alg = "bidiag"
-  }, pls1gm = {
+  }, wrtpls = {
     ana = "Partial least squares regression"
-    alg = "pls1gm"
+    alg = "wrtpls"
   }, stop("Unknown fit method."))
   cat(ana, ", fitted with the", alg, "algorithm.")
-  if (!is.null(object$validation)) 
+  if (!is.null(object$validation))
     cat("\nCross-validated using", object$validation$Bootstraps,"bootstrap samples")
   cat("\nCall:\n", deparse(object$call, width.cutoff = 500), "\n", sep = "")
   invisible(object)

@@ -16,3 +16,11 @@
 * Added the ability to change the cut-off value on the VIP analysis and VIP plot
 
 * Added to smc summary and plot if the results are corrected for auto-correlation
+
+# mvdalab 1.2
+
+* Updated cross-validation procedure for PCA
+
+* Added 'wrtpls' algorithm to plsFit function
+
+* Change font sizes throughout for graphs

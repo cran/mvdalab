@@ -5,10 +5,10 @@
 \title{Plus-Minus (Mas-o-Menos) Classifier}
 \description{Functions to perform plus-minus classifier with a formula interface. Leave one out crossvalidation also implemented. Model extraction, plot, print and summary methods are also implemented.}
 \usage{
-plusminusFit(formula, data, subset, na.action, method = "plusminus", n_cores = 2, 
-                         validation = c("loo", "none"), model = TRUE, 
+plusminusFit(formula, data, subset, na.action, method = "plusminus", n_cores = 2,
+                         validation = c("loo", "none"), model = TRUE,
                          x = FALSE, y = FALSE, ...)
-  
+
 \method{summary}{plusminus}(object,...)
 }
 \arguments{
@@ -49,13 +49,20 @@ Zhao et al.: Mas-o-menos: a simple sign averaging method for discriminationin ge
 }
 \seealso{\code{\link{plusminus.fit}}, \code{\link{plusminus.loo}}}
 \examples{
-###  Plus-Minus CLASSIFIER WITH validation = 'loo', i.e. leave-one-out CV ###
+###  PLUS-Minus CLASSIFIER WITH validation = 'none', i.e. no CV ###
 data(plusMinusDat)
-mod1 <- plusminusFit(Y ~., data = plusMinusDat, validation = "loo", n_cores = 2)
+mod1 <- plusminusFit(Y ~., data = plusMinusDat, validation = "none", n_cores = 2)
 summary(mod1)
 
-###  PLUS-Minus CLASSIFIER WITH validation = 'none', i.e. no CV ###
-
-mod2 <- plusminusFit(Y ~., data = plusMinusDat, validation = "none", n_cores = 2)
+###  Plus-Minus CLASSIFIER WITH validation = 'loo', i.e. leave-one-out CV ###
+\dontrun{
+data(plusMinusDat)
+mod2 <- plusminusFit(Y ~., data = plusMinusDat, validation = "loo", n_cores = 2)
 summary(mod2)
+}
+
+
+
+
+
 }

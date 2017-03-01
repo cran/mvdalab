@@ -14,7 +14,9 @@
 }
 \author{Richard Baumgartner (\email{richard_baumgartner@merck.com}), Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com})}
 \examples{
+\dontrun{
 data(plusMinusDat)
 mod1 <- plusminusFit(Y ~., data = plusMinusDat, validation = "loo", n_cores = 2)
 print(mod1)
+}
 }

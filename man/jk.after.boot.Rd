@@ -3,8 +3,8 @@
 \title{Jackknife After Bootstrap}
 \description{This function calculates the jackknife influence values from a bootstrap output \code{mvdareg} object and plots the corresponding jackknife-after-bootstrap plot.}
 \usage{
-jk.after.boot(object, ncomp = object$ncomp, 
-              type = c("coefficients", "loadings", "weights"), 
+jk.after.boot(object, ncomp = object$ncomp,
+              type = c("coefficients", "loadings", "weights"),
               parm = NULL)
 }
 \arguments{
@@ -14,7 +14,7 @@ jk.after.boot(object, ncomp = object$ncomp,
 \item{parm}{ predictor variable for which to perform the assessment.  if \code{NULL} one will be chosen at random.}
 }
 \details{
-The centred jackknife quantiles for each observation are estimated from those bootstrap samples in which a particular observation did not appear. These are then plotted against the influence values. 
+The centred jackknife quantiles for each observation are estimated from those bootstrap samples in which a particular observation did not appear. These are then plotted against the influence values.
 
 The resulting plots are useful diagnostic tools for looking at the way individual observations affect the bootstrap output.
 
@@ -31,9 +31,13 @@ Efron, B. (1992) Jackknife-after-bootstrap standard errors and influence functio
 }
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
 jk.after.boot(mod1, type = "coefficients")
+\dontrun{
+jk.after.boot(mod1, type = "loadings")
+jk.after.boot(mod1, type = "weights")
+}
 }

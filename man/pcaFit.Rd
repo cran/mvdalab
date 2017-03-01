@@ -4,12 +4,10 @@
 \alias{plot.mvdapca}
 \title{Principal Component Analysis}
 \description{Function to perform principal component analysis.}
-\usage{
-pcaFit(data, scale = TRUE, ncomp = NULL)
-}
+\usage{pcaFit(data, scale = TRUE, ncomp = NULL)}
 \arguments{
 \item{data}{ an data frame containing the variables in the model. }
-\item{scale}{ an optional data frame containing the variables in the model. }
+\item{scale}{ should scaling to unit variance be used. }
 \item{ncomp}{ the number of components to include in the model (see below). }
 }
 \details{
@@ -24,7 +22,7 @@ The calculation is done via singular value decomposition of the data matrix.  Du
 \item{D}{ eigenvalues }
 \item{Xdata}{ X matrix }
 \item{Percent.Explained}{ Explained variation in X }
-\item{GVC}{ approximate MSEP }
+\item{PRESS}{ Prediction Error Sum-of-Squares }
 \item{ncomp}{ number of latent variables }
 \item{method}{ PLS algorithm used }
 }
@@ -33,7 +31,9 @@ The calculation is done via singular value decomposition of the data matrix.  Du
 
 Everitt, Brian S. (2005). An R and S-Plus Companion to Multivariate Analysis. Springer-Verlag.
 
-Josse, J. and Husson, F. (2011). Selecting the number of components in PCA using cross-validation approximations. Computational Statistics and Data Analysis. 56 (6), pp. 1869:1879.
+Edoardo Saccentia, Jos? Camacho, (2015) On the use of the observation-wise k-fold operation in PCA cross-validation, J. Chemometrics 2015; 29: 467-478.
+
+
 }
 \seealso{\code{\link{loadingsplot2D}}, \code{\link{T2}}, \code{\link{Xresids}}, \code{\link{ScoreContrib}}}
 \examples{

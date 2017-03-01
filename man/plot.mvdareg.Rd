@@ -3,8 +3,8 @@
 \title{General plotting function for \code{mvdareg} and \code{mvdapaca} objects.}
 \description{A general plotting function for a \code{mvdareg} and \code{mvdapca} objects.}
 \usage{
-\method{plot}{mvdareg}(x, plottype = c("PE", "scoresplot", "loadingsplot", 
-                    "loadingsplot2D", "T2", "Xresids", "coefsplot", "ap.plot", 
+\method{plot}{mvdareg}(x, plottype = c("PE", "scoresplot", "loadingsplot",
+                    "loadingsplot2D", "T2", "Xresids", "coefsplot", "ap.plot",
                     "weightsplot", "weightsplot2D", "acfplot"), ...)
 }
 \arguments{
@@ -21,11 +21,11 @@ The following plotting functions are supported:
 
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "loo")
+\dontrun{
 plot(mod1, plottype = "scoresplot")
 plot(mod1, plottype = "loadingsplot2D")
 plot(mod1, plottype = "T2", ncomp = 2, phase = 1, conf = c(.95, .99))
+}
 }

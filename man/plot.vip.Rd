@@ -4,13 +4,12 @@
 \description{This function generates a plot an object of class \code{vip}.
 }
 \usage{
-\method{plot}{vip}(x, ncomp = 1, cut.off = 1, ...)
+\method{plot}{vip}(x, ncomp = 1, ...)
 }
 
 \arguments{
 \item{x}{\code{vip} object }
 \item{ncomp}{ the number of components to include the graph output. }
-\item{cut.off}{ a cut.off value for the VIP (default = 1). }
 \item{\dots}{ additional arguments.  Currently ignored. }
 }
 \details{
@@ -25,16 +24,25 @@ The output of \code{plot.vip} is a graph of the variable importance in the proje
 \author{Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com})}
 
 \examples{
-data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, method = "bidiagpls", validation = "loo")
 VIP1 <- vip(mod1, conf = .95)
-plot(VIP1)
+plot(VIP1, ncomp = 2)
 
-mod2 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-        ncomp = 2, method = "bidiagpls", validation = "loo")
-VIP1b <- vip(mod2, conf = .95)
-plot(VIP1b)
+\dontrun{
+data(Penta)
+## Number of bootstraps set to 300 to demonstrate flexibility
+## Use a minimum of 1000 (default) for results that support bootstraping
+mod2 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
+VIP2 <- vip(mod2, conf = .95)
+plot(VIP2)
+}
+
+###  PLS MODEL FIT WITH method = 'wrtpls' and validation = 'none', i.e. WRT-PLS is performed ###
+\dontrun{
+mod3 <- plsFit(Sepal.Length ~., scale = TRUE, data = iris,
+               method = "wrtpls", validation = "none") #ncomp is ignored
+plot(vip(mod3), ncomp = 1:2)
+}
 }

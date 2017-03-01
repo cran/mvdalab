@@ -10,8 +10,8 @@ loadings.boots(object, ncomp = object$ncomp, conf = .95)
 \item{ncomp}{ number of components in the model.  }
 \item{conf}{ desired confidence level. }
 }
-\details{The function computes the bootstrap BCa confidence intervals for fitted \code{mvdareg} models where \code{valiation = "oob"}. 
-Should be used in instances in which there is reason to suspectd the percentile intervals.  Results provided across all latent variables or for specific latent variables via \code{ncomp}.  
+\details{The function computes the bootstrap BCa confidence intervals for fitted \code{mvdareg} models where \code{valiation = "oob"}.
+Should be used in instances in which there is reason to suspectd the percentile intervals.  Results provided across all latent variables or for specific latent variables via \code{ncomp}.
 }
 \value{
 A loadings.boots object contains component results for the following:
@@ -35,9 +35,9 @@ Efron, B. (1992) Jackknife-after-bootstrap standard errors and influence functio
 }
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
 loadings.boots(mod1, ncomp = 2, conf = .95)
 }

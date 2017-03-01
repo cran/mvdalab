@@ -13,7 +13,7 @@
 }
 \details{
 \code{weights} is used to extract a summary of the weights of a PLS.
-If \code{ncomps} is missing (or is \code{NULL}), summaries for all regression estimates are returned.  Otherwise, if comps is given parameters for a model with only the requested component comps is returned. 
+If \code{ncomps} is missing (or is \code{NULL}), summaries for all regression estimates are returned.  Otherwise, if comps is given parameters for a model with only the requested component comps is returned.
 
 For mvdareg objects only, boostrap summaries provided are for actual regression weights, bootstrap percentiles, bootstrap mean, skewness, and bias.  These summaries can also be extracted using \code{weight.boots}
 }
@@ -38,9 +38,9 @@ Efron, B. (1992) Jackknife-after-bootstrap standard errors and influence functio
 }
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
 weights(mod1, ncomp = 2, conf = .95)
 }

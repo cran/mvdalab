@@ -1,20 +1,20 @@
-plsFit <- function(formula, ncomp, data, subset, na.action, contr = "contr.niets",
-                   method = "bidiagpls", scale = TRUE, n_cores = 2, 
-                   validation = c("none", "oob", "loo"), boots = 1000, model = TRUE, 
-                   x = FALSE, y = FALSE, ...)
+plsFit <- function(formula, data, subset, ncomp = NULL, na.action, contr = "contr.niets",
+                     method = c("bidiagpls", "wrtpls"), scale = TRUE, n_cores = 2, alpha = .05, perms = 2000,
+                     validation = c("none", "oob", "loo"), boots = 1000, model = TRUE,
+                     x = FALSE, y = FALSE, ...)
 {
   options(contrasts = c(contr, "contr.poly"))
   ret.x <- x
   ret.y <- y
   mf <- match.call(expand.dots = FALSE)
   scaled <- mf$scale
-  m <- match(c("formula", "data", "subset", "na.action"), names(mf), 
+  m <- match(c("formula", "data", "subset", "na.action"), names(mf),
              0)
   mf <- mf[c(1, m)]
   mf[[1]] <- as.name("model.frame")
   mf <- eval(mf, parent.frame())
-  method <- match.arg(method, "bidiagpls")  
-  if (method == "model.frame") 
+  method <- match.arg(method, c("bidiagpls", "wrtpls"))
+  if (method == "model.frame")
     return(mf)
   mt <- attr(mf, "terms")
   mm <- model.matrix(mt, mf, contrasts = FALSE)
@@ -25,56 +25,67 @@ plsFit <- function(formula, ncomp, data, subset, na.action, contr = "contr.niets
   X <- X2 <- no.intercept(model.matrix(mt, mf))
   nobj <- dim(X)[1]
   npred <- dim(X)[2]
-  if (length(attr(mt, "term.labels")) == 1 && !is.null(colnames(mf[[attr(mt, 
-                                                                         "term.labels")]]))) 
+  if (length(attr(mt, "term.labels")) == 1 && !is.null(colnames(mf[[attr(mt,
+                                                                         "term.labels")]])))
     colnames(X) <- sub(attr(mt, "term.labels"), "", colnames(X))
-  if (missing(ncomp)) {
+  if (missing(ncomp) | is.null(ncomp)) {
     ncomp <- min(nobj - 1, npred)
-    ncompWarn <- FALSE
   }
   else {
-    if (ncomp < 1 || ncomp > min(nobj - 1, npred)) 
+    if (ncomp < 1 || ncomp > min(nobj - 1, npred))
       stop("Invalid number of components, ncomp")
     ncompWarn <- TRUE
   }
   sdscale <- identical(TRUE, scale)
   if(!(is.numeric(scale))) sdscales <- sqrt(colSums((X - rep(colMeans(X), each = nobj))^2)/(nobj - 1))
-  if (is.numeric(scale)) 
-    if (length(scale) == npred) 
+  if (is.numeric(scale))
+    if (length(scale) == npred)
       X <- X/rep(scale, each = nobj)
   else stop("length of 'scale' must equal the number of x variables")
+  validation <- ifelse(method == "bidiagpls" & validation == "oob", "oob",
+                       ifelse(method == "bidiagpls" & validation == "loo", "loo",
+                              ifelse(method == "wrtpls", "none", "none")))
   switch(match.arg(validation), oob = {
-    val <- mvdaboot(X2, Y2, ncomp, method = method, boots = boots, 
+    val <- mvdaboot(X2, Y2, ncomp, method = method, boots = boots,
                     n_cores = n_cores, scale = sdscale, ...)
-  }, 
+  },
   none = {
     val <- NULL
+    ncomp <- ncomp <- min(nobj - 1, npred)
   }, loo = {
-    val <- mvdaloo(X2, Y2, ncomp, method = method, 
+    val <- mvdaloo(X2, Y2, ncomp, method = method,
                    scale = sdscale, ...)
   }
   )
   if (identical(TRUE, ncomp > val$ncomp)) {
     ncomp <- val$ncomp
-    if (ncompWarn) 
+    if (ncompWarn)
       warning("`ncomp' reduced to ", ncomp, " due to cross-validation")
   }
-  fitFunc <- switch(method, bidiagpls = bidiagpls.fit)
+  fitFunc <- switch(method, bidiagpls = bidiagpls.fit, wrtpls = wrtpls.fit)
   if (sdscale == TRUE) {
     scale <- sqrt(colSums((X - rep(colMeans(X), each = nobj))^2)/(nobj - 1))
-    if (any(abs(scale) < .Machine$double.eps^0.5)) 
+    if (any(abs(scale) < .Machine$double.eps^0.5))
       warning("Scaling with (near) zero standard deviation")
     X <- X/rep(scale, each = nobj)
-    
+
   }
   options(contrasts = c("contr.treatment", "contr.poly"))
   start.time <- proc.time()[3]
-  z <- fitFunc(X, Y, ncomp, ...)
+  z <- fitFunc(X, Y, ncomp, perms, alpha, ...)
   z$fit.time <- proc.time()[3] - start.time
   class(z) <- "mvdareg"
   z$na.action <- attr(mf, "na.action")
   z$val.method <- validation
   z$ncomp <- ncomp
+  if(method == "wrtpls") {
+    z$perms <- perms
+    z$alpha <- alpha
+  } else {
+    z$perms <- NULL
+    z$alpha <- NULL
+  }
+
   z$contrasts <- contr
   z$method <- method
   if (is.numeric(scale)) {
@@ -85,11 +96,11 @@ plsFit <- function(formula, ncomp, data, subset, na.action, contr = "contr.niets
   z$call <- match.call()
   z$terms <- mt
   z$mm <- mm
-  if (model) 
+  if (model)
     z$model <- mf
-  if (ret.x) 
+  if (ret.x)
     z$x <- X
-  if (ret.y) 
+  if (ret.y)
     z$y <- Y
   z
 }

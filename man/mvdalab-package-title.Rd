@@ -7,8 +7,8 @@ Multivariate Data Analysis Laboratory (mvdalab)
 }
 \description{
 Implementation of latent variables methods. The focus is on explorative anlaysis
-using dimensionality reduction methods, such as Principal Component Analysis (PCA), 
-and on multivariate regression based on Partial Least Squares regression (PLS). 
+using dimensionality reduction methods, such as Principal Component Analysis (PCA),
+and on multivariate regression based on Partial Least Squares regression (PLS).
 PLS analyses are supported by embedded bootstrapping and variable selection procedures.
 }
 \details{
@@ -21,7 +21,7 @@ License: \tab GPL-3\cr
 
 }
 }
-\author{Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com}), Thanh Tran (\email{thanh.tran@mvdalab.com}), Lionel Blanchet (\email{lionel.blanchet@mvdalab.com})
+\author{Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com}), Thanh Tran (\email{thanh.tran@mvdalab.com}), Lionel Blanchet (\email{lionel.blanchet@mvdalab.com}), Richard Baumgartner (\email{richard_baumgartner@merck.com})
 
 Maintainer: Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com})
 }

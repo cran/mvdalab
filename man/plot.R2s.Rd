@@ -20,10 +20,9 @@ The output of \code{plot.R2s} is a graph of the stated explained variance summar
 \author{Thanh Tran (\email{thanh.tran@mvdalab.com})}
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
-mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
-R2s. <- R2s(mod1)
-plot(R2s.)
+mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
+               ncomp = 2, validation = "oob", boots = 300)
+plot(R2s(mod1))
 }
