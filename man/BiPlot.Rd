@@ -4,7 +4,8 @@
 \description{Generates a 2D Graph of both the scores and loadings for both \code{"mvdareg"} and \code{"mvdapca"} objects.}
 \usage{
 BiPlot(object, diag.adj = c(0, 0), axis.scaling = 2,
-                          cov.scale = FALSE, comps = c(1, 2), col = "red")
+                          cov.scale = FALSE, comps = c(1, 2), 
+                          col = "red", verbose = FALSE)
 }
 \arguments{
 \item{object}{ an object of class \code{"mvdareg"} or \code{"mvdapca"}. }
@@ -13,6 +14,7 @@ BiPlot(object, diag.adj = c(0, 0), axis.scaling = 2,
 \item{cov.scale}{implement covariance scaling}
 \item{comps}{the components to illustrate on the graph}
 \item{col}{the color applied to the scores}
+\item{verbose}{ output results as a data frame}
 }
 \details{
 \code{"BiPlot"} is used to extract a 2D graphical summary of the scores and loadings of PLS and PCA models.
@@ -56,10 +58,8 @@ Jackson, J. E. (1991), A User's Guide to Principal Components , New York: John W
 
 \examples{
 data(Penta)
-## Number of bootstraps set to 300 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
-               ncomp = 2, validation = "oob", boots = 300)
+               ncomp = 2, validation = "loo")
 BiPlot(mod1, diag.adj = c(0, 0), axis.scaling = 2, cov.scale = FALSE)
 
 \dontrun{

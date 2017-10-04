@@ -60,9 +60,4 @@ data(plusMinusDat)
 mod2 <- plusminusFit(Y ~., data = plusMinusDat, validation = "loo", n_cores = 2)
 summary(mod2)
 }
-
-
-
-
-
 }

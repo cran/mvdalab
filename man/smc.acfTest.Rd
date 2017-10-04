@@ -28,9 +28,7 @@ Nelson Lee Afanador, Thanh N. Tran, Lionel Blanchet, Lutgarde M.C. Buydens, Vari
 }
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+               ncomp = 2, validation = "loo")
 smc.acfTest(mod1, ncomp = 2)
 }

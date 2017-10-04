@@ -60,10 +60,10 @@ NOTE: This function is adapted from \code{mvr} in package \pkg{pls} with extensi
 
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+               ncomp = 2, validation = "oob", boots = 300)
 
 ## Run line below to see bootstrap results
 ## mod1$validation

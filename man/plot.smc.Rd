@@ -22,10 +22,8 @@ The output of \code{plot.smc} is a graph of the significant multivariate correla
 
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+               ncomp = 2, validation = "loo")
 smc(mod1)
 plot(smc(mod1))
 }

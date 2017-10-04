@@ -35,9 +35,7 @@ A coefficients object contains a data frame with columns:
 \seealso{\code{\link{coef}}, \code{\link{coefficients.boots}}, \code{\link{coefficients}}}
 \examples{
 data(Penta)
-## Number of bootstraps set to 300 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
-               ncomp = 2, validation = "oob", boots = 300)
+               ncomp = 2, validation = "loo")
 coefficients(mod1)
 }

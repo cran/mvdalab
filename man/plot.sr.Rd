@@ -23,10 +23,8 @@ The output of \code{plot.sr} is a graph of the selectivity ratio for the specifi
 \author{Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com})}
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+               ncomp = 2, validation = "loo")
 sr(mod1)
 plot(sr(mod1))
 }

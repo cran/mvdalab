@@ -23,8 +23,8 @@ The following plotting functions are supported:
 data(Penta)
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
                ncomp = 2, validation = "loo")
-\dontrun{
 plot(mod1, plottype = "scoresplot")
+\dontrun{
 plot(mod1, plottype = "loadingsplot2D")
 plot(mod1, plottype = "T2", ncomp = 2, phase = 1, conf = c(.95, .99))
 }

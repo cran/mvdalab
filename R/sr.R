@@ -1,6 +1,6 @@
 sr <- function(object, ncomps = object$ncomp) {
   Coefs <- as.matrix(object$coefficients)[, ncomps]
-  new.t <- as.matrix(object$Xdata) %*% ((Coefs) / sqrt(crossprod((Coefs))))
+  new.t <- as.matrix(object$Xdata) %*% ((Coefs) / sqrt(crossprod((Coefs))[1]))
   new.p <- (t(object$Xdata) %*% new.t) / as.numeric((t(new.t) %*% new.t))
   X.hat <- new.t %*% t(new.p)
   X.error <- object$Xdata - X.hat

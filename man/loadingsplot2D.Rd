@@ -23,10 +23,8 @@ loadingsplot2D(mod1, comp = c(1, 2))
 
 \dontrun{
 data(Penta)
-## Number of bootstraps set to 300 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
 mod2 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
-               ncomp = 2, validation = "oob", boots = 300)
+               ncomp = 2, validation = "loo")
 loadingsplot2D(mod2, comp = c(1, 2))
 }
 

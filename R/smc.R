@@ -1,7 +1,7 @@
 smc <- function(object, ncomps = object$ncomp, corrected = F) {
   Coefs <- as.matrix(object$coefficients)[, ncomps]
-  new.t.smc <- as.matrix(object$Xdata) %*% ((Coefs) / sqrt(crossprod((Coefs))))
-  X.hat.smc <- new.t.smc %*% t(as.vector(((Coefs) / sqrt(crossprod((Coefs))))))
+  new.t.smc <- as.matrix(object$Xdata) %*% ((Coefs) / sqrt(crossprod((Coefs))[1]))
+  X.hat.smc <- new.t.smc %*% t(as.vector(((Coefs) / sqrt(crossprod((Coefs))[1]))))
   X.error.smc <- object$Xdata - X.hat.smc
   if(corrected == T) {
     My.Cols <- 1:ncol(X.error.smc)

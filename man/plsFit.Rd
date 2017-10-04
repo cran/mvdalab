@@ -90,17 +90,17 @@ NOTE: This function is adapted from \code{mvr} in package \pkg{pls} with extensi
 \code{\link{scoresplot}}, \code{\link{ScoreContrib}}, \code{\link{sr}},
 \code{\link{loadingsplot}}, \code{\link{weightsplot}}, \code{\link{coefsplot}},
 \code{\link{coefficientsplot2D}}, \code{\link{loadingsplot2D}},
-\code{\link{weightsplot2D}}, \code{\link{vip}},
+\code{\link{weightsplot2D}}, 
 \code{\link{bca.cis}}, \code{\link{coefficients.boots}}, \code{\link{loadings.boots}},
 \code{\link{weight.boots}}, \code{\link{coefficients}}, \code{\link{loadings}},
 \code{\link{weights}}, \code{\link{BiPlot}}, \code{\link{jk.after.boot}}}
 \examples{
 ###  PLS MODEL FIT WITH method = 'bidiagpls' and validation = 'oob', i.e. bootstrapping ###
 data(Penta)
-## Number of bootstraps set to 250 to demonstrate flexibility
+## Number of bootstraps set to 300 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], method = "bidiagpls",
-               ncomp = 2, validation = "oob", boots = 250)
+               ncomp = 2, validation = "oob", boots = 300)
 summary(mod1) #Model summary
 
 ###  PLS MODEL FIT WITH method = 'bidiagpls' and validation = 'loo', i.e. leave-one-out CV ###

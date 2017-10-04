@@ -24,9 +24,7 @@ Hotelling, H. (1931). "The generalization of Student's ratio". Annals of Mathema
 
 \examples{
 data(Penta)
-## Number of bootstraps set to 300 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
-               ncomp = 2, validation = "oob", boots = 300)
+               ncomp = 2, validation = "loo")
 T2(mod1, ncomp = 2)
 }

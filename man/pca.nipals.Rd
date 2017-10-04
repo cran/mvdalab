@@ -4,12 +4,13 @@
 \title{PCA with the NIPALS algorithm}
 \description{Implements the Nonlinear Iterative Partial Least Squares (NIPALS) algorithm for computing PCA scores and loadings and intermediate steps to convergence.}
 \usage{
-pca.nipals(data, ncomps = 1, Iters = 500, tol = 1e-08)
+pca.nipals(data, ncomps = 1, Iters = 500, start.vec = NULL, tol = 1e-08)
 }
 \arguments{
 \item{data}{ A dataframe }
 \item{ncomps}{ the number of components to include in the analysis. }
 \item{Iters}{ Number of iterations }
+\item{start.vec}{option for choosing your own starting vector}
 \item{tol}{tolernace for convergence}
 }
 \details{

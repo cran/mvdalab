@@ -19,10 +19,8 @@ The design matrix for a \code{PLS} model with the specified formula and data.
 \author{Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com})}
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+               ncomp = 2, validation = "loo")
 model.matrix(mod1)
 
 }

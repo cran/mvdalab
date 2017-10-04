@@ -36,10 +36,10 @@ Hinkley, D.V. (1988) Bootstrap methods (with Discussion). Journal of the Royal S
 \seealso{\code{\link{plsFit}}, \code{\link{mvdaboot}}, \code{\link{boot.plots}}}
 \examples{
 data(Penta)
-## Number of bootstraps set to 300 to demonstrate flexibility
+## Number of bootstraps set to 250 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
-               ncomp = 2, validation = "oob", boots = 300)
+               ncomp = 2, validation = "oob", boots = 250)
 bca.cis(mod1, conf = .95, type = "coefficients")
 \dontrun{
 bca.cis(mod1, conf = .95, type = "loadings")

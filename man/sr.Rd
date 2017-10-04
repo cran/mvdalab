@@ -32,13 +32,11 @@ O.M. Kvalheim, T.V. Karstang, Interpretation of latent-variable regression model
 
 O.M. Kvalheim, Interpretation of partial least squares regression models by means of target projection and selectivity ratio plots. J. Chemom., 24 (2010), pp. 496:504
 }
-\seealso{\code{\link{smc}}, \code{\link{vip}}}
+\seealso{\code{\link{smc}}}
 \examples{
 data(Penta)
-## Number of bootstraps set to 300 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
-               ncomp = 2, validation = "oob", boots = 300)
+               ncomp = 2, validation = "loo")
 sr(mod1)
 plot(sr(mod1))
 

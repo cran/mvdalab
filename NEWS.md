@@ -24,3 +24,7 @@
 * Added 'wrtpls' algorithm to plsFit function
 
 * Change font sizes throughout for graphs
+
+# mvdalab 1.3
+
+* Bug fixes

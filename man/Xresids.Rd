@@ -7,7 +7,7 @@
 \arguments{
 \item{object}{ an object of class \code{mvdareg} or \code{mvdapca}. }
 \item{ncomp}{ the number of components to include in the calculation of the X-residuals. }
-\item{conf}{ for a bootstrapped model, the confidence level to use. }
+\item{conf}{ the confidence level(s) to use for upper control limit. }
 \item{normalized}{ should residuals be normalized }
 \item{verbose}{ output results as a data frame}
 }
@@ -23,9 +23,7 @@ MacGregor, Process Monitoring and Diagnosis by Multiblock PLS Methods, May 1994 
 }
 \examples{
 data(Penta)
-## Number of bootstraps set to 300 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
-               ncomp = 2, validation = "oob", boots = 300)
+               ncomp = 2, validation = "loo")
 Xresids(mod1, ncomp = 2)
 }

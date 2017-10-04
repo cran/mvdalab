@@ -36,7 +36,7 @@ summary.mvdareg <- function(object, ncomp = object$ncomp, digits = 3, ...) {
         sum(diag(crossprod(as.matrix(object$Xdata))))
     })
     R2Y <- 1 - sapply(1:ncomp, function(x) crossprod(object$Yactual - object$iPreds[, x])) /
-      crossprod(object$Yactual - mean(object$Yactual))
+      crossprod(object$Yactual - mean(object$Yactual))[1]
     cat("\nR2X =", round(R2X, digits))
     cat("\nR2Y =", round(R2Y, digits))
     cat("\nSignificant LVs =", x$wrtpls.out.Sig)
@@ -74,7 +74,7 @@ summary.mvdareg <- function(object, ncomp = object$ncomp, digits = 3, ...) {
         sum(diag(crossprod(as.matrix(object$Xdata))))
     })
     R2Y <- 1 - sapply(1:ncomp, function(x) crossprod(object$Yactual - object$iPreds[, x])) /
-      crossprod(object$Yactual - mean(object$Yactual))
+      crossprod(object$Yactual - mean(object$Yactual))[1]
     cat("\nR2X =", round(R2X, digits))
     cat("\nR2Y =", round(R2Y, digits))
     cat("\nNo. of LOO samples = ", nobj)
@@ -132,7 +132,7 @@ summary.mvdareg <- function(object, ncomp = object$ncomp, digits = 3, ...) {
         sum(diag(crossprod(as.matrix(object$Xdata))))
           })
     R2Y <- 1 - sapply(1:ncomp, function(x) crossprod(object$Yactual - object$iPreds[, x])) /
-          crossprod(object$Yactual - mean(object$Yactual))
+          crossprod(object$Yactual - mean(object$Yactual))[1]
     cat("\nR2X =", round(R2X, digits))
     cat("\nR2Y =", round(R2Y, digits))
     cat("\nOut-of-Bag R2 (per component) =", round(x$validation$cvR2[1:ncomp], digits))

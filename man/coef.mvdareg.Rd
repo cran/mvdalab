@@ -30,9 +30,7 @@ If \code{comps} is missing (or is \code{NULL}), all parameter estimates are retu
 \code{\link{weight.boots}}}
 \examples{
 data(Penta)
-## Number of bootstraps set to 300 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
-               ncomp = 2, validation = "oob", boots = 300)
-coef(mod1, type = "coefficients", conf = .95)
+               ncomp = 2, validation = "loo")
+coef(mod1, type = "coefficients")
 }

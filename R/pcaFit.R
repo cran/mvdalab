@@ -28,7 +28,7 @@ if (ncomp == 1) {
   D <- diag((SVD$d[1:ncomp]^2))/(nrow(X) - 1)
 }
 loadings.a <- t(sqrt(D) %*% t(SVD$v[, 1:ncomp]))
-loadings <- as.matrix(apply(loadings.a, 2, function(x) x/sqrt(crossprod(x))))
+loadings <- as.matrix(apply(loadings.a, 2, function(x) x/sqrt(crossprod(x)[1])))
 scores <- as.matrix(U)
 cumpress <- rep(0L, ncomp + 1)
   press <- matrix(0L, ncomp + 1, npred)

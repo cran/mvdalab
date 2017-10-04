@@ -26,9 +26,7 @@ Dotted line = Quantile at the model specifed alpha
 \seealso{\code{\link{bca.cis}}}
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
-## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
-               method = "wrtpls", validation = "none", boots = 500)
+               method = "wrtpls", validation = "none")
 plot.wrtpls(mod1, distribution = "log")
 }

@@ -34,9 +34,9 @@ Hinkley, D.V. (1988) Bootstrap methods (with Discussion). Journal of the Royal S
 }
 \examples{
 data(Penta)
-## Number of bootstraps set to 500 to demonstrate flexibility
+## Number of bootstraps set to 250 to demonstrate flexibility
 ## Use a minimum of 1000 (default) for results that support bootstraping
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 2, validation = "oob", boots = 500)
+               ncomp = 2, validation = "oob", boots = 250)
 perc.cis(mod1, ncomp = 1:2, conf = .95, type = "coefficients")
 }
