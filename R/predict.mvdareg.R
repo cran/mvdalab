@@ -9,7 +9,7 @@ predict.mvdareg <- function(object, newdata, ncomp = object$ncomp, na.action = n
     new.X <- newdata
   }  else {
     Terms <- delete.response(terms(object))
-    options(contrasts = c(object$contrasts, "contr.poly"))
+    options(contrasts = c("contr.niets", "contr.poly"))
     m <- model.frame(Terms, newdata, na.action = na.action)
     if (!is.null(cl <- attr(Terms, "dataClasses"))) 
       .checkMFClasses(cl, m)

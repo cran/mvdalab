@@ -41,7 +41,6 @@ An object of class \code{mvdareg} is returned. The object contains all component
 \item{ncomp}{ number of latent variables }
 \item{perms}{ number of permutations performed }
 \item{alpha}{ permutation alpha value }
-\item{contrasts}{ contrast matrix used }
 \item{method}{ PLS algorithm }
 \item{scale}{ scaling used }
 \item{scaled}{ was scaling performed }

@@ -1,12 +1,12 @@
-12c71b1eea8cbdd1cbd1f41353afa351 *DESCRIPTION
+e8bbb85e31de913d77bf828ad89da02a *DESCRIPTION
 320065255b257d873e6788fb1ac88cc4 *NAMESPACE
-ae485bdff32109a01bfa91bba3a721c9 *NEWS.md
+43db7d73bddd5ccb8247de2629b838cc *NEWS.md
 f0f2cf96fb41e94cfea7fec1f6d21a7e *R/BiPlot.R
 8217514329542db802f846a3337b3c87 *R/MVComp.R
 2ae78ff935a32ac39bac68c6d331e512 *R/MVcis.R
 caa841cda6a6f9be4f063084477069fe *R/MultCapability.R
 67f38c62f763e0604be23bd6449ba6c0 *R/PE.R
-413ff9a544e5ca4c822ab0399cc20f20 *R/R2s.R
+424cc991e5e1e004b36c49a07a7c4b16 *R/R2s.R
 fb7dfccb857f5a3e0542b39de870ae0e *R/ScoreContrib.R
 16896fc53ffc6c674977835d3c526369 *R/SeqimputeEM.R
 bdbd4b2c35d143ba8febcb3e43cf0bf5 *R/T2.R
@@ -53,11 +53,11 @@ faa116ac5f43f415e3c7a98d359a7760 *R/plot.cp.R
 67f68d08d0d48e0154476c33bcbc3143 *R/plot.mvdareg.R
 36cd6292e86ee4a46f7af23e0a4365e5 *R/plot.plusminus.R
 78568e84038ab38294712ab2e995ef1e *R/plot.wrtpls.R
-49c1562df2d11ad7f5b54645a003a5c6 *R/plsFit.R
+1966fddbaa05f9b48be19eecb92178ec *R/plsFit.R
 ee8861274d45d8481310c782e35f3def *R/plusminus.fit.R
 afe307545901c686972bc65b847d4055 *R/plusminus.loo.R
 820e235afc53e5ce789d0757286c2990 *R/plusminusFit.R
-0359116f8139fdcd35a7fa4abdb4796b *R/predict.mvdareg.R
+92bf24f5f865dd0abdc3cd83d44b7465 *R/predict.mvdareg.R
 27802f5d34c534e2a0e22d264653485b *R/print.empca.R
 a1a14ce7d6ce90dd946acce307fa18a1 *R/print.mvdapca.R
 e9d5793c6375d0e9fd62c39686e53c45 *R/print.mvdareg.R
@@ -70,7 +70,7 @@ a2a0e8ee63c812d28fc8599c971e6973 *R/print.seqem.R
 40d43900c230524835445d33d65ea24b *R/smc.R
 2eb40914f685642cf415fe0723871f2c *R/smc.acfTest.R
 c9f4bc5560148b3a644044f0762d2307 *R/sr.R
-6b5244b8b6afa68ffc9125168f5d0d18 *R/summary.mvdareg.R
+ca412eac09f34053b10b2b013ba14c3e *R/summary.mvdareg.R
 a2a6afbcd33e19d196c5650345d03382 *R/summary.plusminus.R
 14e79414a219c4f6d5a2c5f1891d4b32 *R/weight.boots.R
 cbe4a9f1f4ff4359f83ac47d0290e37f *R/weights.mvdareg.R
@@ -79,7 +79,7 @@ f412536fe69c6dbf560f563757a6ccb3 *R/weightsplot2D.R
 45acfb75e0069355e935f25f5b4d3977 *R/wrtpls.fit.R
 3bade954e5fd61db60482932458cb760 *R/y.loadings.R
 019fb16836ae0de842863c8dbafcb1c1 *R/y.loadings.boots.R
-10761ef6bf9dd27d81b74d6f6a5e8b99 *README.md
+9bab0bc4cd8133030053f047896c2265 *README.md
 75732d0f787632e44d5bb1afe1eb72c2 *data/College.rda
 a34978db71f07a3118859fcda086799e *data/Penta.rda
 fdeb88cc3ec185a3c6abbcc241da74d0 *data/Wang_Chen.rda
@@ -141,7 +141,7 @@ e210b76588338245815548b597ff1188 *man/plot.mvcomp.Rd
 7ae9bc1180fb9a04179eb088076e32c5 *man/plot.smc.Rd
 dea7e9ec0f8626e540bd831510e4a0e0 *man/plot.sr.Rd
 4e29e9d21f1db0f3aa53bbeb084f1232 *man/plot.wrtpls.Rd
-b65687138e0881aecc8a1a69bfb8ad2c *man/plsFit.Rd
+5300504120f6c6f9974170247acc67d2 *man/plsFit.Rd
 de5760c6e3501def58da79dd5ed88ac4 *man/plusMinusDat.Rd
 e3a707c060039a96516672c6d2376609 *man/plusminus.fit.Rd
 3e67c2c70d0c87dcafe76cd76624ff7e *man/plusminus.loo.Rd
@@ -158,6 +158,6 @@ c6ec57cc73d766ef8344e35bba86cf47 *man/weight.boots.Rd
 8d72b77c9144dedb33b130c5deacd652 *man/weights.Rd
 61138d0982d317b876d717dc5fd88e7c *man/weightsplot.Rd
 5f821ea9928e64688d944d0786857cba *man/weightsplot2D.Rd
-69ed418d909308cbedd48993258593ce *man/wrtpls.fit.Rd
+7f4df9f4d81c88843bbb0c4624dc5e05 *man/wrtpls.fit.Rd
 8eb6f9550515a0354136c39f1ee03a62 *man/y.loadings.Rd
 d27115c023520fced5807d5aef208d01 *man/y.loadings.boots.Rd

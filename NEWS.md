@@ -28,3 +28,8 @@
 # mvdalab 1.3
 
 * Bug fixes
+
+# mvdalab 1.4
+
+* Removed contrast argument from plsFit.
+* Bug fixes

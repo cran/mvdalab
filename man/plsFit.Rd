@@ -6,7 +6,7 @@
 \title{Partial Least Squares Regression}
 \description{Functions to perform partial least squares regression with a formula interface. Bootstraping can be used. Prediction, residuals, model extraction, plot, print and summary methods are also implemented.}
 \usage{
-plsFit(formula, data, subset, ncomp = NULL, na.action, contr = "contr.niets",
+plsFit(formula, data, subset, ncomp = NULL, na.action, 
   method = c("bidiagpls", "wrtpls"), scale = TRUE, n_cores = 2, alpha = .05, perms = 2000,
   validation = c("none", "oob", "loo"), boots = 1000, model = TRUE,
   x = FALSE, y = FALSE, ...)
@@ -19,7 +19,6 @@ plsFit(formula, data, subset, ncomp = NULL, na.action, contr = "contr.niets",
 \item{subset}{ an optional vector specifying a subset of observations to be used in the fitting process. }
 \item{ncomp}{ the number of components to include in the model (see below). }
 \item{na.action}{ a function which indicates what should happen when the data contain \code{NAs}. The default is set by the \code{na.action} setting of options, and is \code{na.fail} if that is unset. The default is \code{na.omit}. Another possible value is \code{NULL}, no action. Value \code{na.exclude} can be useful. }
-\item{contr}{ an optional list. See the \code{contrasts.arg} of \code{model.matrix.default}. }
 \item{method}{ the multivariate regression algorithm to be used. }
 \item{scale}{ should scaling to unit variance be used. }
 \item{n_cores}{ Number of cores to run for parallel processing.  Currently set to 2 with the max being 4. }
@@ -51,7 +50,6 @@ If \code{method = "bidiagpls"} and \code{validation = "none"}, no cross-validati
 If \code{method = "wrtpls"} and \code{validation = "none"}, The Weight Randomization Test for the selection of the number of components is performed.  Note that the number of components, \code{ncomp}, is set to \code{min(nobj - 1, npred)}
 
 
-The argument \code{contr} is passed to the default \code{contr.niets}; \code{contr.helmert}, \code{contr.poly}, \code{contr.sum}, \code{contr.treatment} are also supported.
 }
 \value{
 An object of class \code{mvdareg} is returned. The object contains all components returned by the underlying fit function. In addition, it contains the following:

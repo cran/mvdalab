@@ -28,7 +28,6 @@ summary.mvdareg <- function(object, ncomp = object$ncomp, digits = 3, ...) {
     cat("\nFit Summary: \n\nNumber of objects =", nobj)
     cat("\nNumber of predictor variables =", length(attr(object$terms, "term.labels")))
     cat("\nMethod:", x$method)
-    cat("\nDesign Matrix for Factors =", object$contrasts)
     cat("\nNumber of components considered =", ncomp)
     R2X <- sapply(1:ncomp, function(x) {
       1 - sum(diag(crossprod(as.matrix(object$Xdata) -
@@ -66,7 +65,6 @@ summary.mvdareg <- function(object, ncomp = object$ncomp, digits = 3, ...) {
     cat("\nFit Summary: \n\nNumber of objects =", nobj)
     cat("\nNumber of predictor variables =", length(attr(object$terms, "term.labels")))
     cat("\nMethod:", x$method)
-    cat("\nDesign Matrix for Factors =", object$contrasts)
     cat("\nNumber of components considered =", ncomp)
     R2X <- sapply(1:ncomp, function(x) {
       1 - sum(diag(crossprod(as.matrix(object$Xdata) -
@@ -123,7 +121,6 @@ summary.mvdareg <- function(object, ncomp = object$ncomp, digits = 3, ...) {
     cat("\nFit Summary: \n\nNumber of objects =", nobj)
     cat("\nNumber of predictor variables =", length(attr(object$terms, "term.labels")))
     cat("\nMethod:", x$method)
-    cat("\nDesign Matrix for Factors =", object$contrasts)
     cat("\nNo. of bootstrap samples = ", x$validation$bootstraps)
     cat("\nNumber of components considered\nin above parameter estimates =", ncomp)
     R2X <- sapply(1:ncomp, function(x) {

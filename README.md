@@ -9,14 +9,14 @@ Fitting a PLS model:
 library(mvdalab)
 data(Penta)
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1], 
-               ncomp = 3, contr = "contr.niets", method = "bidiagpls", 
+               ncomp = 3, method = "bidiagpls", 
                validation = "oob")
 
 summary(mod1)
 #> Call:
 #> 
 #> plsFit(formula = log.RAI ~ ., ncomp = 3, data = Penta[, -1], 
-#>     contr = "contr.niets", method = "bidiagpls", scale = TRUE, 
+#>     method = "bidiagpls", scale = TRUE, 
 #>     validation = "oob")
 #> 
 #> Coefficients:
@@ -42,7 +42,6 @@ summary(mod1)
 #> Number of objects = 30
 #> Number of predictor variables = 15
 #> Method: bidiagpls
-#> Design Matrix for Factors = contr.niets
 #> No. of bootstrap samples =  1000
 #> Number of components considered
 #> in above parameter estimates = 3
