@@ -1,6 +1,6 @@
-e8bbb85e31de913d77bf828ad89da02a *DESCRIPTION
+edceeb11f0d164e20925eb90dda443cb *DESCRIPTION
 320065255b257d873e6788fb1ac88cc4 *NAMESPACE
-43db7d73bddd5ccb8247de2629b838cc *NEWS.md
+0120eb37ee8b73026dcc35dd6b6deada *NEWS.md
 f0f2cf96fb41e94cfea7fec1f6d21a7e *R/BiPlot.R
 8217514329542db802f846a3337b3c87 *R/MVComp.R
 2ae78ff935a32ac39bac68c6d331e512 *R/MVcis.R
@@ -36,7 +36,7 @@ c147e49061a3d7969b12a861f4d58104 *R/loadings.boots.R
 6e6f3582ef74c57c27b5f60e3efedd7d *R/loadingsplot2D.R
 50f764f0fd886793361334351ee78271 *R/mewma.R
 c851635d03741faa8dda42bc2b61ce5f *R/model.matrix.mvdareg.R
-a7956722021baad4b43ab5e2b15f7611 *R/mvdaboot.R
+350c0408ae1755473f6567d7d9e04345 *R/mvdaboot.R
 d41d8cd98f00b204e9800998ecf8427e *R/mvdalab.R
 36ec26c1484d97045124d012324f06fa *R/mvdaloo.R
 9bca58544434fd33394b3ee8d10cae0b *R/mvrnorm.svd.R
@@ -53,7 +53,7 @@ faa116ac5f43f415e3c7a98d359a7760 *R/plot.cp.R
 67f68d08d0d48e0154476c33bcbc3143 *R/plot.mvdareg.R
 36cd6292e86ee4a46f7af23e0a4365e5 *R/plot.plusminus.R
 78568e84038ab38294712ab2e995ef1e *R/plot.wrtpls.R
-1966fddbaa05f9b48be19eecb92178ec *R/plsFit.R
+68ee60ea364ee390d3bed3ea70c319c1 *R/plsFit.R
 ee8861274d45d8481310c782e35f3def *R/plusminus.fit.R
 afe307545901c686972bc65b847d4055 *R/plusminus.loo.R
 820e235afc53e5ce789d0757286c2990 *R/plusminusFit.R
@@ -124,8 +124,8 @@ f880c8f201cc57cc6f3e54886154fed6 *man/loadingsplot.Rd
 d3bc5c818172d89324e40ffb370a8f27 *man/loadingsplot2D.Rd
 649e9522208df013e6dfe2978d4e7ba3 *man/mewma.Rd
 1c3543179a08a3ce9f67daca19dbffba *man/model.matrix.mvdalab.Rd
-28f05a576d2d8f5975edbeae6be17c04 *man/mvdaboot.Rd
-3eba17c90d30fa88c518a4379b96b70b *man/mvdalab-package-title.Rd
+394a7eda94f4fb0f37bdb28bec9e6b23 *man/mvdaboot.Rd
+6375b1eb38612412335f3633ff09f601 *man/mvdalab-package-title.Rd
 820fd468f75757509dedc4b3bbfe2afd *man/mvdaloo.Rd
 32d23dfd579eadb3df612943acf9e100 *man/mvrnorm.svd.Rd
 d28f055271e612dc18a789a5ce5f4e8d *man/my.dummy.df.Rd
@@ -140,8 +140,8 @@ e210b76588338245815548b597ff1188 *man/plot.mvcomp.Rd
 89af2d5e20e6d62a07e88a00d8b43f47 *man/plot.plusminus.Rd
 7ae9bc1180fb9a04179eb088076e32c5 *man/plot.smc.Rd
 dea7e9ec0f8626e540bd831510e4a0e0 *man/plot.sr.Rd
-4e29e9d21f1db0f3aa53bbeb084f1232 *man/plot.wrtpls.Rd
-5300504120f6c6f9974170247acc67d2 *man/plsFit.Rd
+3ed1599e2ee48bbfa39405cda5b627c5 *man/plot.wrtpls.Rd
+b4f5c77184232081acc69b58c91c73d5 *man/plsFit.Rd
 de5760c6e3501def58da79dd5ed88ac4 *man/plusMinusDat.Rd
 e3a707c060039a96516672c6d2376609 *man/plusminus.fit.Rd
 3e67c2c70d0c87dcafe76cd76624ff7e *man/plusminus.loo.Rd

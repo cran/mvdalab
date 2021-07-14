@@ -21,9 +21,9 @@ License: \tab GPL-3\cr
 
 }
 }
-\author{Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com}), Thanh Tran (\email{thanh.tran@mvdalab.com}), Lionel Blanchet (\email{lionel.blanchet@mvdalab.com}), Richard Baumgartner (\email{richard_baumgartner@merck.com})
+\author{Nelson Lee Afanador (\email{nelson.afanador@gmail.com}), Thanh Tran (\email{thanh.tran@mvdalab.com}), Lionel Blanchet (\email{lionel.blanchet@mvdalab.com}), Richard Baumgartner (\email{richard_baumgartner@merck.com})
 
-Maintainer: Nelson Lee Afanador (\email{nelson.afanador@mvdalab.com})
+Maintainer: Nelson Lee Afanador (\email{nelson.afanador@gmail.com})
 }
 
 

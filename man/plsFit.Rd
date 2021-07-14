@@ -7,10 +7,10 @@
 \description{Functions to perform partial least squares regression with a formula interface. Bootstraping can be used. Prediction, residuals, model extraction, plot, print and summary methods are also implemented.}
 \usage{
 plsFit(formula, data, subset, ncomp = NULL, na.action, 
-  method = c("bidiagpls", "wrtpls"), scale = TRUE, n_cores = 2, alpha = .05, perms = 2000,
-  validation = c("none", "oob", "loo"), boots = 1000, model = TRUE,
-  x = FALSE, y = FALSE, ...)
-
+method = c("bidiagpls", "wrtpls"), scale = TRUE, n_cores = 2, 
+alpha = 0.05, perms = 2000, validation = c("none", "oob", "loo"), 
+boots = 1000, model = TRUE, parallel = FALSE,
+x = FALSE, y = FALSE, ...) 
 \method{summary}{mvdareg}(object, ncomp = object$ncomp, digits = 3, ...)
 }
 \arguments{
@@ -27,6 +27,7 @@ plsFit(formula, data, subset, ncomp = NULL, na.action,
 \item{validation}{ character. What kind of (internal) validation to use. See below. }
 \item{boots}{Number of bootstrap samples when \code{validation = 'oob'}}
 \item{model}{ an optional data frame containing the variables in the model. }
+\item{parallel}{ should parallelization be used. }
 \item{x}{ a logical. If TRUE, the model matrix is returned. }
 \item{y}{ a logical. If TRUE, the response is returned. }
 \item{object}{ an object of class \code{"mvdareg"}, i.e., a fitted model. }
@@ -40,6 +41,8 @@ The type of model to fit is specified with the method argument. Currently two PL
 The formula argument should be a symbolic formula of the form response ~ terms, where response is the name of the response vector and terms is the name of one or more predictor matrices, usually separated by +, e.g., y ~ X + Z. See \code{\link{lm}} for a detailed description. The named variables should exist in the supplied data data frame or in the global environment. The chapter Statistical models in R of the manual An Introduction to R distributed with R is a good reference on formulas in R.
 
 The number of components to fit is specified with the argument \code{ncomp}. It this is not supplied, the maximal number of components is used.
+
+Note that if the number of samples is <= 15, oob validation may fail.  It is recommended that you PLS with \code{validation = "loo"}.
 
 If \code{method = "bidiagpls"} and \code{validation = "oob"}, bootstrap cross-validation is performed. Bootstrap confidence intervals are provided for \code{\link{coefficients}}, \code{weights}, \code{loadings}, and \code{y.loadings}.  The number of bootstrap samples is specified with the argument \code{boots}. See \code{mvdaboot} for details.
 

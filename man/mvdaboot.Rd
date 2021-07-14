@@ -3,8 +3,8 @@
 \title{Bootstrapping routine for \code{mvdareg} objects}
 \description{When \code{validation = 'oob'} this routine effects the bootstrap procedure for \code{mvdareg} objects.}
 \usage{
-mvdaboot(X, Y, ncomp, method = "bidiagpls", 
-        scale = FALSE, n_cores, boots, ...) 
+mvdaboot(X, Y, ncomp, method = "bidiagpls", scale = FALSE, n_cores, parallel,
+          boots, ...)
 }
 \arguments{
 \item{X}{ a matrix of observations. NAs and Infs are not allowed. }
@@ -13,6 +13,7 @@ mvdaboot(X, Y, ncomp, method = "bidiagpls",
 \item{method}{ PLS algorithm used. }
 \item{scale}{ scaling used. }
 \item{n_cores}{ No. of cores to run for parallel processing.  Currently set to 2 (4 max). }
+\item{parallel}{ should parallelization be used. }
 \item{boots}{No. of bootstrap samples when \code{validation = 'oob'}}
 \item{\dots}{ additional arguments.  Currently ignored. }
 }

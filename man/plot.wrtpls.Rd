@@ -28,5 +28,6 @@ Dotted line = Quantile at the model specifed alpha
 data(Penta)
 mod1 <- plsFit(log.RAI ~., scale = TRUE, data = Penta[, -1],
                method = "wrtpls", validation = "none")
-plot.wrtpls(mod1, distribution = "log")
+## Not run
+## plot.wrtpls(mod1, distribution = "log")
 }

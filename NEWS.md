@@ -31,5 +31,14 @@
 
 # mvdalab 1.4
 
+* Bug fixes
+
+# mvdalab 1.5
+
 * Removed contrast argument from plsFit.
+* Bug fixes
+
+# mvdalab 1.6
+
+* Added 'parallel' as optional for plsFit.
 * Bug fixes

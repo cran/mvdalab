@@ -1,8 +1,13 @@
-plsFit <- function (formula, data, subset, ncomp = NULL, na.action, 
-                    method = c("bidiagpls", "wrtpls"), scale = TRUE, n_cores = 2, 
-                    alpha = 0.05, perms = 2000, validation = c("none", "oob", "loo"), 
-                    boots = 1000, model = TRUE, x = FALSE, y = FALSE, 
-                    ...) {
+plsFit <- function(formula, data, subset, ncomp = NULL, na.action, method = c("bidiagpls", "wrtpls"), 
+                       scale = TRUE, n_cores = 2, alpha = 0.05, perms = 2000, 
+          validation = c("none", "oob", "loo"), boots = 1000, model = TRUE, parallel = FALSE,
+          x = FALSE, y = FALSE, ...) 
+{
+  if (!is.logical(scale) || length(scale) != 1) 
+    stop("'scale' must be 'TRUE' or 'FALSE'")
+  if (n_cores > 4) {
+    stop("Number of cores is limited to 4")
+  }
   options(contrasts = c("contr.niets", "contr.poly"))
   ret.x <- x
   ret.y <- y
@@ -49,7 +54,7 @@ plsFit <- function (formula, data, subset, ncomp = NULL, na.action,
                                                 "loo", "loo", ifelse(method == "wrtpls", "none", "none")))
   switch(match.arg(validation), oob = {
     val <- mvdaboot(X2, Y2, ncomp, method = method, boots = boots, 
-                    n_cores = n_cores, scale = sdscale, ...)
+                    n_cores = n_cores, scale = sdscale, parallel = parallel, ...)
   }, none = {
     val <- NULL
     ncomp <- ncomp <- min(nobj - 1, npred)
