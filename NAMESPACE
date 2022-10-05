@@ -1,7 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 import(ggplot2)
 import(MASS)
-import(dummies)
 import(penalized)
 import(moments)
 import(reshape2)

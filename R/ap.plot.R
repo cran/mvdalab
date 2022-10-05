@@ -1,5 +1,6 @@
 ap.plot <- function(object, ncomp = object$ncomp, verbose = FALSE) {
-  if(class(object) != "mvdareg") {
+  Class <- class(object)
+  if(Class != "mvdareg") {
     stop("Coefficient only implemented for PLS")
   }
   ap.dat <- data.frame(Seq = 1:length(as.vector(object$Yactual)),

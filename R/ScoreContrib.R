@@ -2,7 +2,8 @@ ScoreContrib <- function(object, ncomp = 1:object$ncomp, obs1 = 1, obs2 = NULL) 
   S <- as.matrix(object$scores[, ncomp])
   P <- as.matrix(object$loadings[, ncomp])
   X <- as.matrix(object$Xdata)
-  if(class(object) == "mvdapca") {
+  Class <- class(object)
+  if(Class == "mvdapca") {
     Ww <- (P %*% solve(t(P) %*% P))
   } else {
     W <- as.matrix(object$weights[, ncomp])
